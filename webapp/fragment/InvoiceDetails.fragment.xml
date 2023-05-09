@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:table="sap.ui.table">
+        <Dialog id="openDialog" title="Invoice">
+            <content>
+                <table:TreeTable selectionMode="None" class="sapTblColumnDivider sapUiTinyMarginBeginEnd sapUiSmallMarginBotom sapDemoEcDialogTable"
+				id="idInvoiceTable" 
+				rows="{/Invoices}">
+                    <table:extension>
+                        <OverflowToolbar style="Clear">
+                            <Title id="invoiceTitle" text="{OrderID}" />
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://download" />
+                        </OverflowToolbar>
+                    </table:extension>
+                </table:TreeTable>
+            </content>
+            <beginButton>
+            <Button text="Ok" press=".closeDialog"/>
+            </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

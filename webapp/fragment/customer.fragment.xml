@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Table id="customerTable" inset="false" showSeparators="Inner" headerText="Customers" items="{/Customers}">
+        <columns>
+			<Column>
+				<Text text="Company Name" />
+            </Column>
+			<Column>
+				<Text text="Contact Name" />
+			</Column>
+			<Column>
+				<Text text="Contact Title" />
+			</Column>
+			<Column>
+				<Text text="Address" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true">
+				<Text text="Phone" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier
+						title="{CustomerID}"
+						text="{CompanyName}"/>
+					<Text
+						text="{ContactName}" />
+					<Text
+						text="{ContactTitle}" />
+					<Text
+						text="{Address}, {City}, {PostalCode}, {Country}" />
+					<ObjectNumber
+							number="{Phone}"
+							unit="{Fax}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+    </Table>
+</core:FragmentDefinition>

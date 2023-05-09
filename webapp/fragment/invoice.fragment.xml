@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+    <List
+		items="{/Invoices}"
+		headerText="Invoices">
+		<ObjectListItem
+			title="{OrderID}"
+            intro="{
+                path: 'OrderDate',                 
+                type: 'sap.ui.model.type.Date',                 
+                 formatOptions: {                     
+                    style: 'medium'                    
+                }
+            }"
+			type="Active"
+			press="onInvoiceItemPress"
+			number="{
+                        path: 'ShippedDate',                 
+                        type: 'sap.ui.model.type.Date',                 
+                        formatOptions: {                     
+                            style: 'medium'                    
+                        }
+                    }"
+			numberUnit="{
+                    path: 'Freight',
+                    formatter: '.formatter.currencyValue'
+                }"
+            numberState="{= ${Freight} > 10 ? 'Success' : 'Error'}">
+		</ObjectListItem>
+	</List>
+</core:FragmentDefinition>

@@ -1,0 +1,72 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Table id="productTable" inset="false" showSeparators="Inner" headerText="Customers" items="{/Products}">
+        <columns>
+			<Column>
+				<Text text="ProductName" />
+            </Column>
+			<Column
+				minScreenWidth="Desktop"
+                demandPopin="true">
+				<Text text="SupplierID" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+                demandPopin="true">
+				<Text text="CategoryID" />
+			</Column>
+			<Column
+		    	minScreenWidth="Tablet"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="QuantityPerUnit" />
+			</Column>
+			<Column 
+                minScreenWidth="Tablet"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="UnitPrice" />
+			</Column>
+            <Column
+                minScreenWidth="Tablet"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="UnitsInStock" />
+			</Column>
+            <Column
+				hAlign="End">
+				<Text text="UnitsOnOrder" />
+			</Column>
+            <Column
+				minScreenWidth="Desktop"
+                demandPopin="true">
+				<Text text="ReorderLevel" />
+			</Column>
+             
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectStatus
+						text="{ProductName}" state="{ path: 'Discontinued', formatter: '.formatter.productFormat'}"/>
+					<ObjectAttribute 
+						text="{SupplierID}" />
+                    <ObjectAttribute 
+						text="{CategoryID}" />
+                    <Text
+						text="{QuantityPerUnit}" />
+                    <Text
+						text="{UnitPrice}" />
+
+                    <Text
+						text="{UnitsInStock}" />
+                    <Text
+						text="{UnitsOnOrder}" />
+                    <Text
+						text="{ReorderLevel}" />
+					<Text
+						text="{ContactTitle}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+    </Table>
+</core:FragmentDefinition>

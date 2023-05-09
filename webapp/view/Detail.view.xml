@@ -1,0 +1,141 @@
+<mvc:View
+    controllerName="com.practice.northwind.controller.Detail"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+
+    <semantic:SemanticPage
+        id="detailPage"
+        busy="{detailView>/busy}"
+        busyIndicatorDelay="{detailView>/delay}">
+        <semantic:titleHeading>
+            <HBox>
+                <Title
+                    text="{OrderID}"
+                    level="H2"/>
+            </HBox>
+            
+        </semantic:titleHeading>
+        <semantic:headerContent>
+            
+            <ObjectIdentifier title="{i18n>identifierShipmentDetails}" />
+            <ObjectAttribute title="{i18n>attributeShippedDate}" text="{
+                            path: 'ShippedDate',                 
+                            type: 'sap.ui.model.type.Date',                 
+                            formatOptions: {                     
+                                style: 'medium'                    
+                            }}"/>
+            <ObjectAttribute title="{i18n>attributeShipName}" text="{ShipName}"/>
+            <ObjectAttribute title="{i18n>attributeShipAddress}" text="{ShipAddress}, {ShipCity}, {ShipPostalCode}, {ShipCountry}"/>
+            <ObjectAttribute title="{i18n>attributeFreight}" text="{
+                    path: 'Freight',
+                    formatter: '.formatter.currencyValue'
+                }"/>
+            
+            
+        </semantic:headerContent>
+        
+            
+        <semantic:content>
+            <IconTabBar 
+                id="idIconTabBar"
+                select="onFilterSelect"
+                class="sapUiResponsiveContentPadding"
+            >
+                <items>
+                    <IconTabFilter
+				        icon="sap-icon://group"
+				        iconColor="Tile"
+				        count="{/Customers}"
+				        text="Customers"
+				        key="Customers" >
+                            <l:Splitter id="cSplitter" width="100%">
+                                <core:Fragment fragmentName="com.practice.northwind.fragment.customer" type="XML"/>
+                            </l:Splitter>
+                        </IconTabFilter>
+                    <IconTabFilter
+				        icon="sap-icon://employee"
+				        iconColor="Tile"
+				        count="{/Employees}"
+				        text="Employees"
+				        key="Employees">
+                            <l:Splitter id="eSplitter" width="100%">
+                                <core:Fragment fragmentName="com.practice.northwind.fragment.employee" type="XML"/>
+                            </l:Splitter>
+                        </IconTabFilter>
+                        
+                    <IconTabFilter
+				        icon="sap-icon://product"
+				        iconColor="Tile"
+				        count="{/Products}"
+				        text="Products"
+				        key="Products">
+                            <l:Splitter id="pSplitter" width="100%">
+                                <core:Fragment fragmentName="com.practice.northwind.fragment.product" type="XML"/>
+                            </l:Splitter>
+                        </IconTabFilter>
+                    <IconTabFilter
+				        icon="sap-icon://badge"
+				        iconColor="Tile"
+				        count="{/Shippers}"
+				        text="Shippers"
+				        key="Shippers">
+                            <l:Splitter id="shSplitter" width="100%">
+                                <core:Fragment fragmentName="com.practice.northwind.fragment.shippers" type="XML"/>
+                            </l:Splitter>
+                        </IconTabFilter>
+                    <IconTabFilter
+				        icon="sap-icon://shipping-status"
+				        iconColor="Tile"
+				        count="{/Suppliers}"
+				        text="Suppliers"
+				        key="Suppliers">
+                            <l:Splitter id="sSplitter" width="100%">
+                                <core:Fragment fragmentName="com.practice.northwind.fragment.suppliers" type="XML"/>
+                            </l:Splitter>
+                        </IconTabFilter>
+                        <IconTabFilter
+				        icon="sap-icon://my-sales-order"
+				        iconColor="Tile"
+				        count="{/Invoices}"
+				        text="Invoices"
+				        key="Invoices">
+                            <l:Splitter id="iSplitter" width="100%">
+                                <core:Fragment fragmentName="com.practice.northwind.fragment.invoice" type="XML"/>
+                            </l:Splitter>
+                        </IconTabFilter>
+                </items>
+            </IconTabBar>
+            
+        </semantic:content>
+        <!--Semantic ShareMenu Buttons-->
+        <semantic:sendEmailAction>
+            <semantic:SendEmailAction
+                id="shareEmail"
+                press=".onSendEmailPress"/>
+        </semantic:sendEmailAction>
+
+        <semantic:closeAction>
+            <semantic:CloseAction
+                    id="closeColumn"
+                    press=".onCloseDetailPress"/>
+        </semantic:closeAction>
+
+        <semantic:fullScreenAction>
+            <semantic:FullScreenAction
+                    id="enterFullScreen"
+                    visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+                    press=".toggleFullScreen"/>
+        </semantic:fullScreenAction>
+        <semantic:exitFullScreenAction>
+            <semantic:ExitFullScreenAction
+                    id="exitFullScreen"
+                    visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+                    press=".toggleFullScreen"/>
+        </semantic:exitFullScreenAction>
+
+    </semantic:SemanticPage>
+
+</mvc:View>
